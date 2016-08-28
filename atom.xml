@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nickleechee.com/"/>
-  <updated>2016-08-27T17:23:35.000Z</updated>
+  <updated>2016-08-28T08:12:23.000Z</updated>
   <id>http://nickleechee.com/</id>
   
   <author>
@@ -14,6 +14,59 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>你怎样优化你的 guard-else 语句?</title>
+    <link href="http://nickleechee.com/2016/08/28/HowDoYouBeautifyGuard-else/"/>
+    <id>http://nickleechee.com/2016/08/28/HowDoYouBeautifyGuard-else/</id>
+    <published>2016-08-28T03:17:33.000Z</published>
+    <updated>2016-08-28T08:12:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>原作:<a href="http://ericasadun.com/" target="_blank" rel="external">Erica Sadun</a> 原文:<a href="http://ericasadun.com/2016/08/23/how-do-you-beautify-guard-else-conditions/" target="_blank" rel="external">地址</a></p>
+</blockquote>
+<p>这个看起来真的是可怕.</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.03.47-AM.png" alt="code1"></p>
+<p>这个看起来像错的:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.06.56-AM.png" alt="code2"></p>
+<p>这个也是:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.07.50-AM.png" alt="code3"></p>
+<p>还有这个:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.08.25-AM.png" alt="code4"></p>
+<p>然后这两个都需要手工缩进:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.17.53-AM.png" alt="code5"></p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.17.59-AM.png" alt="code5"></p>
+<p>这好像是其中最好的一个:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.08.59-AM.png" alt="code6"></p>
+<p><strong>你准备怎样修复它呢?</strong></p>
+<p><strong>Patrick Perini 建议这样:</strong></p>
+<p><pre><br>guard (<br>  !argument.isEmpty,<br>  nums.count == arguments.count<br>) else {<br>  print(“Blah blah”)<br>}<br></pre><br><a href="https://gist.github.com/pcperini/3b556bfe9e183de617f829b9a48968fd#file-guard_beaut-swift" target="_blank" rel="external">guard_beaut.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
+<p><strong>Greg Titus 认为使用一个简单的语句和一个不会返回的函数会更好:</strong></p>
+<p><pre><br>// Usage<br>func usage() -&gt; Never {<br>    print(“Usage: (appName) <list-of-positive-integers>“)<br>    exit(-1)<br>}</list-of-positive-integers></pre></p>
+<p>guard !arguments.isEmpty,<br>    nums.count == arguments.count else { usage() }<br><br><a href="https://gist.github.com/erica/0819579b9a79f61ffa206154c9eb555c#file-viagreg-swift" target="_blank" rel="external">viagreg.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;原作:&lt;a href=&quot;http://ericasadun.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Erica Sadun&lt;/a&gt; 原文:&lt;a href=&quot;http://ericasadun.com/2016/08
+    
+    </summary>
+    
+      <category term="Translation" scheme="http://nickleechee.com/categories/Translation/"/>
+    
+    
+      <category term="swift" scheme="http://nickleechee.com/tags/swift/"/>
+    
+      <category term="guard-else" scheme="http://nickleechee.com/tags/guard-else/"/>
+    
+      <category term="beautify" scheme="http://nickleechee.com/tags/beautify/"/>
+    
+      <category term="iOS" scheme="http://nickleechee.com/tags/iOS/"/>
+    
+      <category term="translation" scheme="http://nickleechee.com/tags/translation/"/>
+    
+  </entry>
   
   <entry>
     <title>MyFirstBlog</title>

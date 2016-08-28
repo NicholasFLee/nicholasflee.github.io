@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>MyFirstBlog | Nicholas Lee</title>
+    <title>你怎样优化你的 guard-else 语句? | Nicholas Lee</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="MyFirstBlog | Nicholas Lee">
+    <meta name="twitter:title" content="你怎样优化你的 guard-else 语句? | Nicholas Lee">
     <meta name="twitter:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="MyFirstBlog | Nicholas Lee">
+    <meta property="og:title" content="你怎样优化你的 guard-else 语句? | Nicholas Lee">
     <meta property="og:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Nicholas Lee" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://nickleechee.com/2016/08/28/myfirstblog/"/>
+    <link rel="canonical" href="http://nickleechee.com/2016/08/28/HowDoYouBeautifyGuard-else/"/>
 
     
       
@@ -150,30 +150,40 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2016-08-27T16:29:54.000Z" class="post-list__meta--date date">2016-08-28</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/blog/">blog</a>, <a class="tag-link" href="/tags/github/">github</a>, <a class="tag-link" href="/tags/hexo/">hexo</a>
+      <time datetime="2016-08-28T03:17:33.000Z" class="post-list__meta--date date">2016-08-28</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/beautify/">beautify</a>, <a class="tag-link" href="/tags/guard-else/">guard-else</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/swift/">swift</a>, <a class="tag-link" href="/tags/translation/">translation</a>
  </span>
       <span class="page-pv">
       &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">MyFirstBlog</h1>
+    <h1 class="post-title">你怎样优化你的 guard-else 语句?</h1>
   </header>
 
   <section class="post">
     <blockquote>
-<p>Stay hungry, stay foolish.</p>
+<p>原作:<a href="http://ericasadun.com/" target="_blank" rel="external">Erica Sadun</a> 原文:<a href="http://ericasadun.com/2016/08/23/how-do-you-beautify-guard-else-conditions/" target="_blank" rel="external">地址</a></p>
 </blockquote>
-<h3 id="About-This-Blog"><a href="#About-This-Blog" class="headerlink" title="About This Blog"></a><em>About This Blog</em></h3><p>2016年8月28日 距离我离开学校已经10个月了.10个月以来,一直有搭建一个博客的想法, 但是都被各种各样的理由(懒😂)成功的扼杀在了萌芽之中.</p>
-<p>不过就在几天前, 我终于战胜了我的懒惰把这个网站搭建了起来!(撒花😜)  —-&gt; <a href="http://www.nickleechee.com" target="_blank" rel="external">NickLeechee</a></p>
-<p>关于为什么要建这个站呢</p>
-<ul>
-<li>最初的想法是写技术文章发布, 带着淡淡的文艺气息. </li>
-<li>等到实施的时候才发现我根本不是这种人啊! 根本写不出来啊! 就这几句话也是憋了那么久的成果啊!!!<img src="http://img1.imgtn.bdimg.com/it/u=159619693,1215641256&amp;fm=21&amp;gp=0.jpg" alt="MengBi"></li>
-<li>所以目前的计划是翻译一些别人写的棒棒哒的文章然后发布在这里.(希望能坚持下去)</li>
-</ul>
-<p>真的是编不下去了, 所以就这样吧.😂</p>
+<p>这个看起来真的是可怕.</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.03.47-AM.png" alt="code1"></p>
+<p>这个看起来像错的:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.06.56-AM.png" alt="code2"></p>
+<p>这个也是:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.07.50-AM.png" alt="code3"></p>
+<p>还有这个:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.08.25-AM.png" alt="code4"></p>
+<p>然后这两个都需要手工缩进:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.17.53-AM.png" alt="code5"></p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.17.59-AM.png" alt="code5"></p>
+<p>这好像是其中最好的一个:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.08.59-AM.png" alt="code6"></p>
+<p><strong>你准备怎样修复它呢?</strong></p>
+<p><strong>Patrick Perini 建议这样:</strong></p>
+<p><pre><br>guard (<br>  !argument.isEmpty,<br>  nums.count == arguments.count<br>) else {<br>  print(“Blah blah”)<br>}<br></pre><br><a href="https://gist.github.com/pcperini/3b556bfe9e183de617f829b9a48968fd#file-guard_beaut-swift" target="_blank" rel="external">guard_beaut.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
+<p><strong>Greg Titus 认为使用一个简单的语句和一个不会返回的函数会更好:</strong></p>
+<p><pre><br>// Usage<br>func usage() -&gt; Never {<br>    print(“Usage: (appName) <list-of-positive-integers>“)<br>    exit(-1)<br>}</list-of-positive-integers></pre></p>
+<p>guard !arguments.isEmpty,<br>    nums.count == arguments.count else { usage() }<br><br><a href="https://gist.github.com/erica/0819579b9a79f61ffa206154c9eb555c#file-viagreg-swift" target="_blank" rel="external">viagreg.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
 
   </section>
 
@@ -181,50 +191,24 @@
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/08/28/HowDoYouBeautifyGuard-else/" title="你怎样优化你的 guard-else 语句?">你怎样优化你的 guard-else 语句?</a></h2>
-                <p class="excerpt">
-                
-                
-原作:Erica Sadun 原文:地址
-
-这个看起来真的是可怕.
-
-这个看起来像错的:
-
-这个也是:
-
-还有这个:
-
-然后这两个都需要手工缩进:
-
-
-这好像是其中最好的一个:
-
-你准备怎样修复它呢?
-Patrick Perini 建议这样:
-guard (  !argument.isEmpty,
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2016-08-28T03:17:33.000Z" class="post-list__meta--date date">2016-08-28</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/beautify/">beautify</a>, <a class="tag-link" href="/tags/guard-else/">guard-else</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/swift/">swift</a>, <a class="tag-link" href="/tags/translation/">translation</a>
-</span><a class="btn-border-small" href="/2016/08/28/HowDoYouBeautifyGuard-else/">继续阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/08/26/hello-world/" title="Hello World">Hello World</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2016/08/28/myfirstblog/" title="MyFirstBlog">MyFirstBlog</a></h2>
                 <p class="excerpt">
                 
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+                
+Stay hungry, stay foolish.
+
+About This Blog2016年8月28日 距离我离开学校已经10个月了.10个月以来,一直有搭建一个博客的想法, 但是都被各种各样的理由(懒😂)成功的扼杀在了萌芽之中.
+不过就在几天前, 我终于战胜了我的懒惰把这个网站搭建了起来!
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2016-08-25T19:19:06.000Z" class="post-list__meta--date date">2016-08-26</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2016/08/26/hello-world/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2016-08-27T16:29:54.000Z" class="post-list__meta--date date">2016-08-28</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/blog/">blog</a>, <a class="tag-link" href="/tags/github/">github</a>, <a class="tag-link" href="/tags/hexo/">hexo</a>
+</span><a class="btn-border-small" href="/2016/08/28/myfirstblog/">继续阅读</a></div>
                        
             </div>
         
