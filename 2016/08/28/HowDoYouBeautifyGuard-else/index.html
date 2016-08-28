@@ -179,11 +179,29 @@
 <p>这好像是其中最好的一个:</p>
 <p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.08.59-AM.png" alt="code6"></p>
 <p><strong>你准备怎样修复它呢?</strong></p>
-<p><strong>Patrick Perini 建议这样:</strong></p>
-<p><pre><br>guard (<br>  !argument.isEmpty,<br>  nums.count == arguments.count<br>) else {<br>  print(“Blah blah”)<br>}<br></pre><br><a href="https://gist.github.com/pcperini/3b556bfe9e183de617f829b9a48968fd#file-guard_beaut-swift" target="_blank" rel="external">guard_beaut.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
-<p><strong>Greg Titus 认为使用一个简单的语句和一个不会返回的函数会更好:</strong></p>
-<p><pre><br>// Usage<br>func usage() -&gt; Never {<br>    print(“Usage: (appName) <list-of-positive-integers>“)<br>    exit(-1)<br>}</list-of-positive-integers></pre></p>
-<p>guard !arguments.isEmpty,<br>    nums.count == arguments.count else { usage() }<br><br><a href="https://gist.github.com/erica/0819579b9a79f61ffa206154c9eb555c#file-viagreg-swift" target="_blank" rel="external">viagreg.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
+<p><strong>Patrick Perini 建议这样:</strong><br><a href="https://gist.github.com/pcperini/3b556bfe9e183de617f829b9a48968fd#file-guard_beaut-swift" target="_blank" rel="external">guard_beaut.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
+<pre>
+guard (
+  !argument.isEmpty,
+  nums.count == arguments.count
+) else {
+  print("Blah blah")
+}
+</pre>
+
+
+
+<p><strong>Greg Titus 认为使用一个简单的语句和一个不会返回的函数会更好:</strong><br><a href="https://gist.github.com/erica/0819579b9a79f61ffa206154c9eb555c#file-viagreg-swift" target="_blank" rel="external">viagreg.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
+<pre>
+// Usage
+func usage() -> Never {
+    print("Usage: \(appName) <list-of-positive-integers>")
+    exit(-1)
+}
+guard !arguments.isEmpty,
+    nums.count == arguments.count else { usage() }
+</list-of-positive-integers></pre>
+
 
   </section>
 
