@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>你怎样优化你的 guard-else 语句? | Nicholas Lee</title>
+    <title>Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="你怎样优化你的 guard-else 语句? | Nicholas Lee">
+    <meta name="twitter:title" content="Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer">
     <meta name="twitter:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="你怎样优化你的 guard-else 语句? | Nicholas Lee">
+    <meta property="og:title" content="Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer">
     <meta property="og:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Nicholas Lee" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://nickleechee.com/2016/08/28/HowDoYouBeautifyGuard-else/"/>
+    <link rel="canonical" href="http://nickleechee.com"/>
 
     
       
@@ -146,76 +146,16 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <article class="post-container post-container--single">
-
-  <header class="post-header">
-    <div class="post-meta">
-      <time datetime="2016-08-28T03:17:33.000Z" class="post-list__meta--date date">2016-08-28</time> &#8226; <span class="post-meta__tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/beautify/">beautify</a>, <a class="tag-link" href="/tags/guard-else/">guard-else</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/swift/">swift</a>, <a class="tag-link" href="/tags/translation/">translation</a>
- </span>
-      <span class="page-pv">
-      &nbsp;Read&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
-      </span> 
-   
-    </div>
-    <h1 class="post-title">你怎样优化你的 guard-else 语句?</h1>
-  </header>
-
-  <section class="post">
-    <blockquote>
-<p>原作:<a href="http://ericasadun.com/" target="_blank" rel="external">Erica Sadun</a> 原文:<a href="http://ericasadun.com/2016/08/23/how-do-you-beautify-guard-else-conditions/" target="_blank" rel="external">地址</a></p>
-</blockquote>
-<p>这个看起来真的是可怕.</p>
-<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.03.47-AM.png" alt="code1"></p>
-<p>这个看起来像错的:</p>
-<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.06.56-AM.png" alt="code2"></p>
-<p>这个也是:</p>
-<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.07.50-AM.png" alt="code3"></p>
-<p>还有这个:</p>
-<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.08.25-AM.png" alt="code4"></p>
-<p>然后这两个都需要手工缩进:</p>
-<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.17.53-AM.png" alt="code5"></p>
-<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.17.59-AM.png" alt="code5"></p>
-<p>这好像是其中最好的一个:</p>
-<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.08.59-AM.png" alt="code6"></p>
-<p><strong>你准备怎样修复它呢?</strong></p>
-<p><strong>Patrick Perini 建议这样:</strong><br><a href="https://gist.github.com/pcperini/3b556bfe9e183de617f829b9a48968fd#file-guard_beaut-swift" target="_blank" rel="external">guard_beaut.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
-<pre>
-guard (
-  !argument.isEmpty,
-  nums.count == arguments.count
-) else {
-  print("Blah blah")
-}
-</pre>
-
-
-
-<p><strong>Greg Titus 认为使用一个简单的语句和一个不会返回的函数会更好:</strong><br><a href="https://gist.github.com/erica/0819579b9a79f61ffa206154c9eb555c#file-viagreg-swift" target="_blank" rel="external">viagreg.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
-<pre>
-// Usage
-func usage() -> Never {
-    print("Usage: \(appName) <list-of-positive-integers>")
-    exit(-1)
-}
-guard !arguments.isEmpty,
-    nums.count == arguments.count else { usage() }
-</list-of-positive-integers></pre>
-
-
-  </section>
-
-</article>
-<section class="read-more">
-           
+            <div class="main-post-list">
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">Recent Articles</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/09/01/MakeKeyboardHideIntextField&textView/" title="textView和textField退出键盘的方法">textView和textField退出键盘的方法</a></h2>
-                <p class="excerpt">
-                
-                使用return键退出键盘
+  <ol class="post-list">
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/09/01/MakeKeyboardHideIntextField&textView/" title="link to post.title">textView和textField退出键盘的方法</a></h2>
+      <p class="excerpt">
+    
+      使用return键退出键盘
 1.textField
 使用代理  
 
@@ -225,40 +165,22 @@ guard !arguments.isEmpty,
 
 实现代理方法:
 
-func te
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2016-09-01T12:37:27.000Z" class="post-list__meta--date date">2016-09-01</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
+func textFieldShouldReturn(textField: UITextField) -&amp;gt; 
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-09-01T12:37:27.000Z" class="post-list__meta--date date">2016-09-01</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
   <a class="tag-link" href="/tags/SeriesOfFoundation/">SeriesOfFoundation</a>, <a class="tag-link" href="/tags/回顾基础系列/">回顾基础系列</a>
 </span><a class="btn-border-small" href="/2016/09/01/MakeKeyboardHideIntextField&textView/">ReadMore</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">Earlier articles</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/08/28/myfirstblog/" title="MyFirstBlog">MyFirstBlog</a></h2>
-                <p class="excerpt">
-                
-                
-Stay hungry, stay foolish.
-
-About This Blog2016年8月28日 距离我离开学校已经10个月了.10个月以来,一直有搭建一个博客的想法, 但是都被各种各样的理由(懒😂)成功的扼杀在了萌芽之中.
-不过就在几天前, 我终于战胜了我的懒惰把这个网站搭建了起来!
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2016-08-27T16:29:54.000Z" class="post-list__meta--date date">2016-08-28</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/blog/">blog</a>, <a class="tag-link" href="/tags/github/">github</a>, <a class="tag-link" href="/tags/hexo/">hexo</a>
-</span><a class="btn-border-small" href="/2016/08/28/myfirstblog/">ReadMore</a></div>
-                       
-            </div>
-        
-     
-   
-   
+      <hr class="post-list__divider" />
+    </li>
   
-</section>
+    
+  </ol>
+
+
+
+</div>
+
 
             
             <footer class="footer">

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nickleechee.com/"/>
-  <updated>2016-08-28T08:27:28.000Z</updated>
+  <updated>2016-09-01T12:55:37.000Z</updated>
   <id>http://nickleechee.com/</id>
   
   <author>
@@ -14,6 +14,64 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>textView和textField退出键盘的方法</title>
+    <link href="http://nickleechee.com/2016/09/01/MakeKeyboardHideIntextField&amp;textView/"/>
+    <id>http://nickleechee.com/2016/09/01/MakeKeyboardHideIntextField&amp;textView/</id>
+    <published>2016-09-01T12:37:27.000Z</published>
+    <updated>2016-09-01T12:55:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>使用return键退出键盘</strong></p>
+<p>1.<em>textField</em></p>
+<pre><code>使用代理  
+
+准守协议:class ViewController: UIViewController, UITextFieldDelegate
+
+设置代理对象:textField.delegate = self
+
+实现代理方法:
+
+func textFieldShouldReturn(textField: UITextField) -&gt; Bool {
+    textField.resignFirstResponder()
+    return true;
+}
+</code></pre><p>2.<em>textView</em></p>
+<pre><code>使用代理
+
+准守协议:class ViewController: UIViewController, UITextViewDelegate
+
+设置代理对象:textView.delegate = self
+
+实现代理方法:
+
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -&gt; Bool {
+    if text == &quot;\n&quot; {
+        textView.resignFirstResponder()
+        return false;
+    }
+    return true;
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;使用return键退出键盘&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1.&lt;em&gt;textField&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;使用代理  
+
+准守协议:class ViewController: UIViewController, UITextFiel
+    
+    </summary>
+    
+      <category term="SeriesOfFoundation" scheme="http://nickleechee.com/categories/SeriesOfFoundation/"/>
+    
+    
+      <category term="回顾基础系列" scheme="http://nickleechee.com/tags/%E5%9B%9E%E9%A1%BE%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97/"/>
+    
+      <category term="SeriesOfFoundation" scheme="http://nickleechee.com/tags/SeriesOfFoundation/"/>
+    
+  </entry>
   
   <entry>
     <title>你怎样优化你的 guard-else 语句?</title>
