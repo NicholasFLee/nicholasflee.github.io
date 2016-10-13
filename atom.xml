@@ -145,47 +145,6 @@ guard !arguments.isEmpty,
   </entry>
   
   <entry>
-    <title>MyFirstBlog</title>
-    <link href="http://nickleechee.com/2016/08/28/myfirstblog/"/>
-    <id>http://nickleechee.com/2016/08/28/myfirstblog/</id>
-    <published>2016-08-27T16:29:54.000Z</published>
-    <updated>2016-08-27T17:23:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>Stay hungry, stay foolish.</p>
-</blockquote>
-<h3 id="About-This-Blog"><a href="#About-This-Blog" class="headerlink" title="About This Blog"></a><em>About This Blog</em></h3><p>2016年8月28日 距离我离开学校已经10个月了.10个月以来,一直有搭建一个博客的想法, 但是都被各种各样的理由(懒😂)成功的扼杀在了萌芽之中.</p>
-<p>不过就在几天前, 我终于战胜了我的懒惰把这个网站搭建了起来!(撒花😜)  —-&gt; <a href="http://www.nickleechee.com" target="_blank" rel="external">NickLeechee</a></p>
-<p>关于为什么要建这个站呢</p>
-<ul>
-<li>最初的想法是写技术文章发布, 带着淡淡的文艺气息. </li>
-<li>等到实施的时候才发现我根本不是这种人啊! 根本写不出来啊! 就这几句话也是憋了那么久的成果啊!!!<img src="http://img1.imgtn.bdimg.com/it/u=159619693,1215641256&amp;fm=21&amp;gp=0.jpg" alt="MengBi"></li>
-<li>所以目前的计划是翻译一些别人写的棒棒哒的文章然后发布在这里.(希望能坚持下去)</li>
-</ul>
-<p>真的是编不下去了, 所以就这样吧.😂</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Stay hungry, stay foolish.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;About-This-Blog&quot;&gt;&lt;a href=&quot;#About-This-Blog&quot; class=&quot;headerlink&quot; title=&quot;A
-    
-    </summary>
-    
-      <category term="others" scheme="http://nickleechee.com/categories/others/"/>
-    
-    
-      <category term="github" scheme="http://nickleechee.com/tags/github/"/>
-    
-      <category term="hexo" scheme="http://nickleechee.com/tags/hexo/"/>
-    
-      <category term="blog" scheme="http://nickleechee.com/tags/blog/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="http://nickleechee.com/2016/08/26/hello-world/"/>
     <id>http://nickleechee.com/2016/08/26/hello-world/</id>
