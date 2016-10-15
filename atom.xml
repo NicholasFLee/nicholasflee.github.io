@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nickleechee.com/"/>
-  <updated>2016-09-01T12:55:37.000Z</updated>
+  <updated>2016-10-15T12:24:32.000Z</updated>
   <id>http://nickleechee.com/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>给UITextField 设置手机号码的样式显示</title>
+    <link href="http://nickleechee.com/2016/10/15/ChangeTextViewStyleToPhone/"/>
+    <id>http://nickleechee.com/2016/10/15/ChangeTextViewStyleToPhone/</id>
+    <published>2016-10-15T12:24:31.000Z</published>
+    <updated>2016-10-15T12:24:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>目标</strong> : 让textField 在输入手机号时, 显示成这种格式: [136 6666 6666] –&gt; 第三位号码和第七位后面加一个空格, 在输入11为数字之后不可以继续输入.</p>
+<p><strong>方法</strong> : 为textField 添加一个监听事件, 在长度为 3 和 8 的时候, 在textField.text 后面添加一个@” “, 在textField.text.length 大于 13 的时候不再显示继续输入的数字.</p>
+<p><strong>代码</strong> : </p>
+<pre><code>- (void)phoneTextFieldDidChange:(UITextField *)textField {
+    if (textField.text.length &gt; 13) {
+            textField.text = [textField.text substringToIndex:13];
+     }
+      if (textField.text.length == 3 || textField.text.length == 8) {
+        textField.text = [textField.text stringByAppendingString:@&quot; &quot;];
+      }
+}
+</code></pre><p><strong>BUG</strong> : 但是如果只是这样写, 便会在删除数字的时候遇到BUG –&gt; 那就是空格不能被删除, 因为在光标到达空格后面时每按一次回退键, 上述代码便会在继续加一个空格…..</p>
+<p><strong>方法</strong> : 在textField 的代理方法里监听回退键, 在光标到达空格的时, 按下回退键便直接 “删除” 2 位,    “136 “  –&gt; “13”.</p>
+<p><strong>代码</strong> :  </p>
+<pre><code>- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:        (NSRange)range replacementString:(NSString *)string {
+    if (textField == _phoneTextField) {
+        if ([string isEqualToString:@&quot;&quot;] &amp;&amp; (textField.text.length == 4 ||                 textField.text.length == 9)) {
+            textField.text = [textField.text                 substringToIndex:textField.text.length - 1];
+          }
+      }
+     return YES;
+}
+</code></pre><blockquote>
+<p><a href="http://music.163.com/#/song?id=31445772" target="_blank" rel="external">理想三旬</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;目标&lt;/strong&gt; : 让textField 在输入手机号时, 显示成这种格式: [136 6666 6666] –&amp;gt; 第三位号码和第七位后面加一个空格, 在输入11为数字之后不可以继续输入.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;方法&lt;/strong&gt; 
+    
+    </summary>
+    
+      <category term="Tips" scheme="http://nickleechee.com/categories/Tips/"/>
+    
+    
+      <category term="Tips" scheme="http://nickleechee.com/tags/Tips/"/>
+    
+  </entry>
   
   <entry>
     <title>textView和textField退出键盘的方法</title>

@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>textView和textField退出键盘的方法 | Nicholas Lee</title>
+    <title>Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="textView和textField退出键盘的方法 | Nicholas Lee">
+    <meta name="twitter:title" content="Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer">
     <meta name="twitter:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="textView和textField退出键盘的方法 | Nicholas Lee">
+    <meta property="og:title" content="Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer">
     <meta property="og:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Nicholas Lee" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://nickleechee.com/2016/09/01/MakeKeyboardHideIntextField&amp;textView/"/>
+    <link rel="canonical" href="http://nickleechee.com"/>
 
     
       
@@ -146,113 +146,32 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <article class="post-container post-container--single">
-
-  <header class="post-header">
-    <div class="post-meta">
-      <time datetime="2016-09-01T12:37:27.000Z" class="post-list__meta--date date">2016-09-01</time> &#8226; <span class="post-meta__tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/SeriesOfFoundation/">SeriesOfFoundation</a>, <a class="tag-link" href="/tags/回顾基础系列/">回顾基础系列</a>
- </span>
-      <span class="page-pv">
-      &nbsp;Read&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
-      </span> 
-   
-    </div>
-    <h1 class="post-title">textView和textField退出键盘的方法</h1>
-  </header>
-
-  <section class="post">
-    <p><strong>使用return键退出键盘</strong></p>
-<p>1.<em>textField</em></p>
-<pre><code>使用代理  
-
-准守协议:class ViewController: UIViewController, UITextFieldDelegate
-
-设置代理对象:textField.delegate = self
-
-实现代理方法:
-
-func textFieldShouldReturn(textField: UITextField) -&gt; Bool {
-    textField.resignFirstResponder()
-    return true;
-}
-</code></pre><p>2.<em>textView</em></p>
-<pre><code>使用代理
-
-准守协议:class ViewController: UIViewController, UITextViewDelegate
-
-设置代理对象:textView.delegate = self
-
-实现代理方法:
-
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -&gt; Bool {
-    if text == &quot;\n&quot; {
-        textView.resignFirstResponder()
-        return false;
-    }
-    return true;
-}
-</code></pre>
-  </section>
-
-</article>
-<section class="read-more">
-           
+            <div class="main-post-list">
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">Recent Articles</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/10/15/ChangeTextViewStyleToPhone/" title="给UITextField 设置手机号码的样式显示">给UITextField 设置手机号码的样式显示</a></h2>
-                <p class="excerpt">
-                
-                目标 : 让textField 在输入手机号时, 显示成这种格式: [136 6666 6666] –&amp;gt; 第三位号码和第七位后面加一个空格, 在输入11为数字之后不可以继续输入.
-方法 : 为textField 添加一个监听事件, 在长度为 3 和 8 的时候, 在textField.text
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2016-10-15T12:24:31.000Z" class="post-list__meta--date date">2016-10-15</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
+  <ol class="post-list">
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/10/15/ChangeTextViewStyleToPhone/" title="link to post.title">给UITextField 设置手机号码的样式显示</a></h2>
+      <p class="excerpt">
+    
+      目标 : 让textField 在输入手机号时, 显示成这种格式: [136 6666 6666] –&amp;gt; 第三位号码和第七位后面加一个空格, 在输入11为数字之后不可以继续输入.
+方法 : 为textField 添加一个监听事件, 在长度为 3 和 8 的时候, 在textField.text 后面添加一个@” “, 在textField.text.length 大于 13 的时候不再显示继
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-10-15T12:24:31.000Z" class="post-list__meta--date date">2016-10-15</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
   <a class="tag-link" href="/tags/Tips/">Tips</a>
 </span><a class="btn-border-small" href="/2016/10/15/ChangeTextViewStyleToPhone/">ReadMore</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">Earlier articles</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/08/28/HowDoYouBeautifyGuard-else/" title="你怎样优化你的 guard-else 语句?">你怎样优化你的 guard-else 语句?</a></h2>
-                <p class="excerpt">
-                
-                
-原作:Erica Sadun 原文:地址
-
-这个看起来真的是可怕.
-
-这个看起来像错的:
-
-这个也是:
-
-还有这个:
-
-然后这两个都需要手工缩进:
-
-
-这好像是其中最好的一个:
-
-你准备怎样修复它呢?
-Patrick Perini 建议这样:guard_beaut.swift hosted wit
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2016-08-28T03:17:33.000Z" class="post-list__meta--date date">2016-08-28</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/beautify/">beautify</a>, <a class="tag-link" href="/tags/guard-else/">guard-else</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/swift/">swift</a>, <a class="tag-link" href="/tags/translation/">translation</a>
-</span><a class="btn-border-small" href="/2016/08/28/HowDoYouBeautifyGuard-else/">ReadMore</a></div>
-                       
-            </div>
-        
-     
-   
-   
+      <hr class="post-list__divider" />
+    </li>
   
-</section>
+    
+  </ol>
+
+
+
+</div>
+
 
             
             <footer class="footer">

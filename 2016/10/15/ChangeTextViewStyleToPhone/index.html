@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>textView和textField退出键盘的方法 | Nicholas Lee</title>
+    <title>给UITextField 设置手机号码的样式显示 | Nicholas Lee</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="textView和textField退出键盘的方法 | Nicholas Lee">
+    <meta name="twitter:title" content="给UITextField 设置手机号码的样式显示 | Nicholas Lee">
     <meta name="twitter:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="textView和textField退出键盘的方法 | Nicholas Lee">
+    <meta property="og:title" content="给UITextField 设置手机号码的样式显示 | Nicholas Lee">
     <meta property="og:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Nicholas Lee" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://nickleechee.com/2016/09/01/MakeKeyboardHideIntextField&amp;textView/"/>
+    <link rel="canonical" href="http://nickleechee.com/2016/10/15/ChangeTextViewStyleToPhone/"/>
 
     
       
@@ -150,21 +150,61 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2016-09-01T12:37:27.000Z" class="post-list__meta--date date">2016-09-01</time> &#8226; <span class="post-meta__tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/SeriesOfFoundation/">SeriesOfFoundation</a>, <a class="tag-link" href="/tags/回顾基础系列/">回顾基础系列</a>
+      <time datetime="2016-10-15T12:24:31.000Z" class="post-list__meta--date date">2016-10-15</time> &#8226; <span class="post-meta__tags tags">at&nbsp;
+  <a class="tag-link" href="/tags/Tips/">Tips</a>
  </span>
       <span class="page-pv">
       &nbsp;Read&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">textView和textField退出键盘的方法</h1>
+    <h1 class="post-title">给UITextField 设置手机号码的样式显示</h1>
   </header>
 
   <section class="post">
-    <p><strong>使用return键退出键盘</strong></p>
-<p>1.<em>textField</em></p>
-<pre><code>使用代理  
+    <p><strong>目标</strong> : 让textField 在输入手机号时, 显示成这种格式: [136 6666 6666] –&gt; 第三位号码和第七位后面加一个空格, 在输入11为数字之后不可以继续输入.</p>
+<p><strong>方法</strong> : 为textField 添加一个监听事件, 在长度为 3 和 8 的时候, 在textField.text 后面添加一个@” “, 在textField.text.length 大于 13 的时候不再显示继续输入的数字.</p>
+<p><strong>代码</strong> : </p>
+<pre><code>- (void)phoneTextFieldDidChange:(UITextField *)textField {
+    if (textField.text.length &gt; 13) {
+            textField.text = [textField.text substringToIndex:13];
+     }
+      if (textField.text.length == 3 || textField.text.length == 8) {
+        textField.text = [textField.text stringByAppendingString:@&quot; &quot;];
+      }
+}
+</code></pre><p><strong>BUG</strong> : 但是如果只是这样写, 便会在删除数字的时候遇到BUG –&gt; 那就是空格不能被删除, 因为在光标到达空格后面时每按一次回退键, 上述代码便会在继续加一个空格…..</p>
+<p><strong>方法</strong> : 在textField 的代理方法里监听回退键, 在光标到达空格的时, 按下回退键便直接 “删除” 2 位,    “136 “  –&gt; “13”.</p>
+<p><strong>代码</strong> :  </p>
+<pre><code>- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:        (NSRange)range replacementString:(NSString *)string {
+    if (textField == _phoneTextField) {
+        if ([string isEqualToString:@&quot;&quot;] &amp;&amp; (textField.text.length == 4 ||                 textField.text.length == 9)) {
+            textField.text = [textField.text                 substringToIndex:textField.text.length - 1];
+          }
+      }
+     return YES;
+}
+</code></pre><blockquote>
+<p><a href="http://music.163.com/#/song?id=31445772" target="_blank" rel="external">理想三旬</a></p>
+</blockquote>
+
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Earlier articles</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/09/01/MakeKeyboardHideIntextField&textView/" title="textView和textField退出键盘的方法">textView和textField退出键盘的方法</a></h2>
+                <p class="excerpt">
+                
+                使用return键退出键盘
+1.textField
+使用代理  
 
 准守协议:class ViewController: UIViewController, UITextFieldDelegate
 
@@ -172,79 +212,12 @@
 
 实现代理方法:
 
-func textFieldShouldReturn(textField: UITextField) -&gt; Bool {
-    textField.resignFirstResponder()
-    return true;
-}
-</code></pre><p>2.<em>textView</em></p>
-<pre><code>使用代理
-
-准守协议:class ViewController: UIViewController, UITextViewDelegate
-
-设置代理对象:textView.delegate = self
-
-实现代理方法:
-
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -&gt; Bool {
-    if text == &quot;\n&quot; {
-        textView.resignFirstResponder()
-        return false;
-    }
-    return true;
-}
-</code></pre>
-  </section>
-
-</article>
-<section class="read-more">
-           
-    
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">Recent Articles</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/10/15/ChangeTextViewStyleToPhone/" title="给UITextField 设置手机号码的样式显示">给UITextField 设置手机号码的样式显示</a></h2>
-                <p class="excerpt">
-                
-                目标 : 让textField 在输入手机号时, 显示成这种格式: [136 6666 6666] –&amp;gt; 第三位号码和第七位后面加一个空格, 在输入11为数字之后不可以继续输入.
-方法 : 为textField 添加一个监听事件, 在长度为 3 和 8 的时候, 在textField.text
+func te
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2016-10-15T12:24:31.000Z" class="post-list__meta--date date">2016-10-15</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/Tips/">Tips</a>
-</span><a class="btn-border-small" href="/2016/10/15/ChangeTextViewStyleToPhone/">ReadMore</a></div>
-                           
-            </div>
-        
-        
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">Earlier articles</span>
-                <h2 class="post-list__post-title post-title"><a href="/2016/08/28/HowDoYouBeautifyGuard-else/" title="你怎样优化你的 guard-else 语句?">你怎样优化你的 guard-else 语句?</a></h2>
-                <p class="excerpt">
-                
-                
-原作:Erica Sadun 原文:地址
-
-这个看起来真的是可怕.
-
-这个看起来像错的:
-
-这个也是:
-
-还有这个:
-
-然后这两个都需要手工缩进:
-
-
-这好像是其中最好的一个:
-
-你准备怎样修复它呢?
-Patrick Perini 建议这样:guard_beaut.swift hosted wit
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2016-08-28T03:17:33.000Z" class="post-list__meta--date date">2016-08-28</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/beautify/">beautify</a>, <a class="tag-link" href="/tags/guard-else/">guard-else</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/swift/">swift</a>, <a class="tag-link" href="/tags/translation/">translation</a>
-</span><a class="btn-border-small" href="/2016/08/28/HowDoYouBeautifyGuard-else/">ReadMore</a></div>
+                <div class="post-list__meta"><time datetime="2016-09-01T12:37:27.000Z" class="post-list__meta--date date">2016-09-01</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
+  <a class="tag-link" href="/tags/SeriesOfFoundation/">SeriesOfFoundation</a>, <a class="tag-link" href="/tags/回顾基础系列/">回顾基础系列</a>
+</span><a class="btn-border-small" href="/2016/09/01/MakeKeyboardHideIntextField&textView/">ReadMore</a></div>
                        
             </div>
         
