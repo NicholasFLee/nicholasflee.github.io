@@ -4,9 +4,9 @@
   <subtitle>--&gt; HUNGRY &amp; FOOLISH as a iOS developer</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://nickleechee.com/"/>
+  <link href="http://zlee.io/"/>
   <updated>2016-10-15T12:24:32.000Z</updated>
-  <id>http://nickleechee.com/</id>
+  <id>http://zlee.io/</id>
   
   <author>
     <name>Nicholas Lee</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>给UITextField 设置手机号码的样式显示</title>
-    <link href="http://nickleechee.com/2016/10/15/ChangeTextViewStyleToPhone/"/>
-    <id>http://nickleechee.com/2016/10/15/ChangeTextViewStyleToPhone/</id>
+    <link href="http://zlee.io/2016/10/15/ChangeTextViewStyleToPhone/"/>
+    <id>http://zlee.io/2016/10/15/ChangeTextViewStyleToPhone/</id>
     <published>2016-10-15T12:24:31.000Z</published>
     <updated>2016-10-15T12:24:32.000Z</updated>
     
@@ -56,17 +56,17 @@
     
     </summary>
     
-      <category term="Tips" scheme="http://nickleechee.com/categories/Tips/"/>
+      <category term="Tips" scheme="http://zlee.io/categories/Tips/"/>
     
     
-      <category term="Tips" scheme="http://nickleechee.com/tags/Tips/"/>
+      <category term="Tips" scheme="http://zlee.io/tags/Tips/"/>
     
   </entry>
   
   <entry>
     <title>textView和textField退出键盘的方法</title>
-    <link href="http://nickleechee.com/2016/09/01/MakeKeyboardHideIntextField&amp;textView/"/>
-    <id>http://nickleechee.com/2016/09/01/MakeKeyboardHideIntextField&amp;textView/</id>
+    <link href="http://zlee.io/2016/09/01/MakeKeyboardHideIntextField&amp;textView/"/>
+    <id>http://zlee.io/2016/09/01/MakeKeyboardHideIntextField&amp;textView/</id>
     <published>2016-09-01T12:37:27.000Z</published>
     <updated>2016-09-01T12:55:37.000Z</updated>
     
@@ -112,19 +112,19 @@ func textFieldShouldReturn(textField: UITextField) -&gt; Bool {
     
     </summary>
     
-      <category term="SeriesOfFoundation" scheme="http://nickleechee.com/categories/SeriesOfFoundation/"/>
+      <category term="SeriesOfFoundation" scheme="http://zlee.io/categories/SeriesOfFoundation/"/>
     
     
-      <category term="回顾基础系列" scheme="http://nickleechee.com/tags/%E5%9B%9E%E9%A1%BE%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97/"/>
+      <category term="回顾基础系列" scheme="http://zlee.io/tags/%E5%9B%9E%E9%A1%BE%E5%9F%BA%E7%A1%80%E7%B3%BB%E5%88%97/"/>
     
-      <category term="SeriesOfFoundation" scheme="http://nickleechee.com/tags/SeriesOfFoundation/"/>
+      <category term="SeriesOfFoundation" scheme="http://zlee.io/tags/SeriesOfFoundation/"/>
     
   </entry>
   
   <entry>
     <title>你怎样优化你的 guard-else 语句?</title>
-    <link href="http://nickleechee.com/2016/08/28/HowDoYouBeautifyGuard-else/"/>
-    <id>http://nickleechee.com/2016/08/28/HowDoYouBeautifyGuard-else/</id>
+    <link href="http://zlee.io/2016/08/28/HowDoYouBeautifyGuard-else/"/>
+    <id>http://zlee.io/2016/08/28/HowDoYouBeautifyGuard-else/</id>
     <published>2016-08-28T03:17:33.000Z</published>
     <updated>2016-08-28T08:27:28.000Z</updated>
     
@@ -177,25 +177,25 @@ guard !arguments.isEmpty,
     
     </summary>
     
-      <category term="Translation" scheme="http://nickleechee.com/categories/Translation/"/>
+      <category term="Translation" scheme="http://zlee.io/categories/Translation/"/>
     
     
-      <category term="swift" scheme="http://nickleechee.com/tags/swift/"/>
+      <category term="swift" scheme="http://zlee.io/tags/swift/"/>
     
-      <category term="guard-else" scheme="http://nickleechee.com/tags/guard-else/"/>
+      <category term="guard-else" scheme="http://zlee.io/tags/guard-else/"/>
     
-      <category term="beautify" scheme="http://nickleechee.com/tags/beautify/"/>
+      <category term="beautify" scheme="http://zlee.io/tags/beautify/"/>
     
-      <category term="iOS" scheme="http://nickleechee.com/tags/iOS/"/>
+      <category term="iOS" scheme="http://zlee.io/tags/iOS/"/>
     
-      <category term="translation" scheme="http://nickleechee.com/tags/translation/"/>
+      <category term="translation" scheme="http://zlee.io/tags/translation/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://nickleechee.com/2016/08/26/hello-world/"/>
-    <id>http://nickleechee.com/2016/08/26/hello-world/</id>
+    <link href="http://zlee.io/2016/08/26/hello-world/"/>
+    <id>http://zlee.io/2016/08/26/hello-world/</id>
     <published>2016-08-25T19:19:06.000Z</published>
     <updated>2016-08-25T19:19:06.000Z</updated>
     
