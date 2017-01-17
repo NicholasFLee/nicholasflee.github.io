@@ -152,88 +152,17 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/15/ChangeTextViewStyleToPhone/" title="link to post.title">给UITextField 设置手机号码的样式显示</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2016/10/15/ChangeTextViewStyleToPhone/" title="link to post.title">手机号码格式的 UITextField</a></h2>
       <p class="excerpt">
     
-      目标 : 让textField 在输入手机号时, 显示成这种格式: [136 6666 6666] –&amp;gt; 第三位号码和第七位后面加一个空格, 在输入11为数字之后不可以继续输入.
-方法 : 为textField 添加一个监听事件, 在长度为 3 和 8 的时候, 在textField.text 后面添加一个@” “, 在textField.text.length 大于 13 的时候不再显示继
+      目标 : 让textField 在输入手机号时, 显示成这种格式: [666 6666 6666] –&amp;gt; 第三位号码和第七位后面加一个分隔符, 在输入11为数字之后不可以继续输入.
+点 : 1.光标在分隔符后面时, 按删除键让光标往前移动一格.2.插入和从中间删除数字的时候让分隔符始终保持在原位.3.分隔符在最后一位的时候删除分隔符
+方法 :首先来一个 CharacterSet 保证输入le
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2016-10-15T12:24:31.000Z" class="post-list__meta--date date">2016-10-15</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
   <a class="tag-link" href="/tags/Tips/">Tips</a>
 </span><a class="btn-border-small" href="/2016/10/15/ChangeTextViewStyleToPhone/">ReadMore</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/09/01/MakeKeyboardHideIntextField&textView/" title="link to post.title">textView和textField退出键盘的方法</a></h2>
-      <p class="excerpt">
-    
-      使用return键退出键盘
-1.textField
-使用代理  
-
-准守协议:class ViewController: UIViewController, UITextFieldDelegate
-
-设置代理对象:textField.delegate = self
-
-实现代理方法:
-
-func textFieldShouldReturn(textField: UITextField) -&amp;gt; 
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-09-01T12:37:27.000Z" class="post-list__meta--date date">2016-09-01</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/SeriesOfFoundation/">SeriesOfFoundation</a>, <a class="tag-link" href="/tags/回顾基础系列/">回顾基础系列</a>
-</span><a class="btn-border-small" href="/2016/09/01/MakeKeyboardHideIntextField&textView/">ReadMore</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/28/HowDoYouBeautifyGuard-else/" title="link to post.title">你怎样优化你的 guard-else 语句?</a></h2>
-      <p class="excerpt">
-    
-      
-原作:Erica Sadun 原文:地址
-
-这个看起来真的是可怕.
-
-这个看起来像错的:
-
-这个也是:
-
-还有这个:
-
-然后这两个都需要手工缩进:
-
-
-这好像是其中最好的一个:
-
-你准备怎样修复它呢?
-Patrick Perini 建议这样:guard_beaut.swift hosted with ❤ by GitHub
-
-guard (
-  !argument.isEmpty,
-  nums
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-08-28T03:17:33.000Z" class="post-list__meta--date date">2016-08-28</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/beautify/">beautify</a>, <a class="tag-link" href="/tags/guard-else/">guard-else</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>, <a class="tag-link" href="/tags/swift/">swift</a>, <a class="tag-link" href="/tags/translation/">translation</a>
-</span><a class="btn-border-small" href="/2016/08/28/HowDoYouBeautifyGuard-else/">ReadMore</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/08/26/hello-world/" title="link to post.title">Hello World</a></h2>
-      <p class="excerpt">
-    
-      Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-08-25T19:19:06.000Z" class="post-list__meta--date date">2016-08-26</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;</span><a class="btn-border-small" href="/2016/08/26/hello-world/">ReadMore</a></div>
       <hr class="post-list__divider" />
     </li>
   

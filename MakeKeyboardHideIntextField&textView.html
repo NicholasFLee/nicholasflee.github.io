@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer</title>
+    <title>textView和textField退出键盘的方法 | Nicholas Lee</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer">
+    <meta name="twitter:title" content="textView和textField退出键盘的方法 | Nicholas Lee">
     <meta name="twitter:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer">
+    <meta property="og:title" content="textView和textField退出键盘的方法 | Nicholas Lee">
     <meta property="og:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Nicholas Lee" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://zlee.io"/>
+    <link rel="canonical" href="http://zlee.io/MakeKeyboardHideIntextField&amp;textView.html"/>
 
     
       
@@ -52,7 +52,7 @@
     </span>
 
     
-<header class="panel-cover " style="background-image: url(/images/background-cover.jpg)">
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
   <div class="panel-main">
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
@@ -146,32 +146,47 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/15/ChangeTextViewStyleToPhone/" title="link to post.title">手机号码格式的 UITextField</a></h2>
-      <p class="excerpt">
-    
-      目标 : 让textField 在输入手机号时, 显示成这种格式: [666 6666 6666] –&amp;gt; 第三位号码和第七位后面加一个分隔符, 在输入11为数字之后不可以继续输入.
-点 : 1.光标在分隔符后面时, 按删除键让光标往前移动一格.2.插入和从中间删除数字的时候让分隔符始终保持在原位.3.分隔符在最后一位的时候删除分隔符
-方法 :首先来一个 CharacterSet 保证输入le
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-10-15T12:24:31.000Z" class="post-list__meta--date date">2016-10-15</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/Tips/">Tips</a>
-</span><a class="btn-border-small" href="/2016/10/15/ChangeTextViewStyleToPhone/">ReadMore</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
+            <article class="post-container post-container--single">
 
+  <header class="post-header">
+    <h1 class="post-title">textView和textField退出键盘的方法</h1>
+  </header>
 
+  <section class="post">
+    <p><strong>使用return键退出键盘</strong></p>
+<p>1.<em>textField</em></p>
+<pre><code>使用代理  
 
-</div>
+准守协议:class ViewController: UIViewController, UITextFieldDelegate
+
+设置代理对象:textField.delegate = self
+
+实现代理方法:
+
+func textFieldShouldReturn(textField: UITextField) -&gt; Bool {
+    textField.resignFirstResponder()
+    return true;
+}
+</code></pre><p>2.<em>textView</em></p>
+<pre><code>使用代理
+
+准守协议:class ViewController: UIViewController, UITextViewDelegate
+
+设置代理对象:textView.delegate = self
+
+实现代理方法:
+
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -&gt; Bool {
+    if text == &quot;\n&quot; {
+        textView.resignFirstResponder()
+        return false;
+    }
+    return true;
+}
+</code></pre>
+  </section>
+</article>
+
 
 
             

@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer</title>
+    <title>你怎样优化你的 guard-else 语句? | Nicholas Lee</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer">
+    <meta name="twitter:title" content="你怎样优化你的 guard-else 语句? | Nicholas Lee">
     <meta name="twitter:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Nicholas Lee | --&gt; HUNGRY &amp; FOOLISH as a iOS developer">
+    <meta property="og:title" content="你怎样优化你的 guard-else 语句? | Nicholas Lee">
     <meta property="og:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Nicholas Lee" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://zlee.io"/>
+    <link rel="canonical" href="http://zlee.io/HowDoYouBeautifyGuard-else.html"/>
 
     
       
@@ -52,7 +52,7 @@
     </span>
 
     
-<header class="panel-cover " style="background-image: url(/images/background-cover.jpg)">
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
   <div class="panel-main">
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
@@ -146,32 +146,57 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2016/10/15/ChangeTextViewStyleToPhone/" title="link to post.title">手机号码格式的 UITextField</a></h2>
-      <p class="excerpt">
-    
-      目标 : 让textField 在输入手机号时, 显示成这种格式: [666 6666 6666] –&amp;gt; 第三位号码和第七位后面加一个分隔符, 在输入11为数字之后不可以继续输入.
-点 : 1.光标在分隔符后面时, 按删除键让光标往前移动一格.2.插入和从中间删除数字的时候让分隔符始终保持在原位.3.分隔符在最后一位的时候删除分隔符
-方法 :首先来一个 CharacterSet 保证输入le
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2016-10-15T12:24:31.000Z" class="post-list__meta--date date">2016-10-15</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/Tips/">Tips</a>
-</span><a class="btn-border-small" href="/2016/10/15/ChangeTextViewStyleToPhone/">ReadMore</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <h1 class="post-title">你怎样优化你的 guard-else 语句?</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>原作:<a href="http://ericasadun.com/" target="_blank" rel="external">Erica Sadun</a> 原文:<a href="http://ericasadun.com/2016/08/23/how-do-you-beautify-guard-else-conditions/" target="_blank" rel="external">地址</a></p>
+</blockquote>
+<p>这个看起来真的是可怕.</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.03.47-AM.png" alt="code1"></p>
+<p>这个看起来像错的:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.06.56-AM.png" alt="code2"></p>
+<p>这个也是:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.07.50-AM.png" alt="code3"></p>
+<p>还有这个:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.08.25-AM.png" alt="code4"></p>
+<p>然后这两个都需要手工缩进:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.17.53-AM.png" alt="code5"></p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.17.59-AM.png" alt="code5"></p>
+<p>这好像是其中最好的一个:</p>
+<p><img src="http://ericasadun.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-23-at-11.08.59-AM.png" alt="code6"></p>
+<p><strong>你准备怎样修复它呢?</strong></p>
+<p><strong>Patrick Perini 建议这样:</strong><br><a href="https://gist.github.com/pcperini/3b556bfe9e183de617f829b9a48968fd#file-guard_beaut-swift" target="_blank" rel="external">guard_beaut.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
+<pre>
+guard (
+  !argument.isEmpty,
+  nums.count == arguments.count
+) else {
+  print("Blah blah")
+}
+</pre>
 
 
 
-</div>
+<p><strong>Greg Titus 认为使用一个简单的语句和一个不会返回的函数会更好:</strong><br><a href="https://gist.github.com/erica/0819579b9a79f61ffa206154c9eb555c#file-viagreg-swift" target="_blank" rel="external">viagreg.swift</a> hosted with ❤ by <a href="http://www.github.com" target="_blank" rel="external">GitHub</a></p>
+<pre>
+// Usage
+func usage() -> Never {
+    print("Usage: \(appName) <list-of-positive-integers>")
+    exit(-1)
+}
+guard !arguments.isEmpty,
+    nums.count == arguments.count else { usage() }
+</list-of-positive-integers></pre>
+
+
+  </section>
+</article>
+
 
 
             
