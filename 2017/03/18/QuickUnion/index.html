@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>手机号码格式的 UITextField | Nicholas Lee</title>
+    <title>QuickUnion | Nicholas Lee</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="手机号码格式的 UITextField | Nicholas Lee">
+    <meta name="twitter:title" content="QuickUnion | Nicholas Lee">
     <meta name="twitter:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="手机号码格式的 UITextField | Nicholas Lee">
+    <meta property="og:title" content="QuickUnion | Nicholas Lee">
     <meta property="og:description" content="HUNGRY &amp; FOOLISH as a iOS developer">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Nicholas Lee" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://zlee.io/2016/10/15/ChangeTextViewStyleToPhone/"/>
+    <link rel="canonical" href="http://zlee.io/2017/03/18/QuickUnion/"/>
 
     
       
@@ -150,57 +150,19 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2016-10-15T12:24:31.000Z" class="post-list__meta--date date">2016-10-15</time> &#8226; <span class="post-meta__tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/Tips/">Tips</a>
+      <time datetime="2017-03-18T15:55:47.000Z" class="post-list__meta--date date">2017-03-18</time> &#8226; <span class="post-meta__tags tags">at&nbsp;
+  <a class="tag-link" href="/tags/Algs/">Algs</a>
  </span>
       <span class="page-pv">
       &nbsp;Read&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">手机号码格式的 UITextField</h1>
+    <h1 class="post-title">QuickUnion</h1>
   </header>
 
   <section class="post">
-    <p><strong>目标</strong> : 让textField 在输入手机号时, 显示成这种格式: [666 6666 6666] –&gt; 第三位号码和第七位后面加一个分隔符, 在输入11为数字之后不可以继续输入.</p>
-<p><strong>点</strong> : 1.光标在分隔符后面时, 按删除键让光标往前移动一格.<br>2.插入和从中间删除数字的时候让分隔符始终保持在原位.<br>3.分隔符在最后一位的时候删除分隔符</p>
-<p><strong>方法</strong> :<br>首先来一个 CharacterSet 保证输入<br>let cSet = CharacterSet.init(charactersIn: “0123456789/b”)</p>
-<p>然后有一个分隔符的Enum<br>enum Separator: String {<br>case hyphen = “-“<br>case blank = “ “<br>}</p>
-<p>然后就是各种判断……</p>
-<p>移动光标<br>private func setCursorPosition(input: UITextField, position: Int) {<br>let position = input.position(from: input.beginningOfDocument, offset: position)!<br>input.selectedTextRange = input.textRange(from: position, to: position)<br>}</p>
-<p><strong>DEMO</strong> :</p>
-<blockquote>
-<p><a href="https://github.com/NicholasFLee/ZLPhoneTextField" target="_blank" rel="external">demo</a></p>
-</blockquote>
-<p><strong>全部代码</strong> : </p>
-<p>//<br>//  ZLPhoneTextField.swift<br>//  PhoneTextField<br>//<br>//  Created by Nicholas Lee on 2017/1/15.<br>//  Copyright © 2017年 Nicholas Lee. All rights reserved.<br>//</p>
-<p>import UIKit</p>
-<p>enum Separator: String {<br>case hyphen = “-“<br>case blank = “ “<br>}</p>
-<p>class ZLPhoneTextField: UITextField, UITextFieldDelegate {</p>
-<p>let cSet = CharacterSet.init(charactersIn: “0123456789”)<br>let separator: Separator</p>
-<p>init(separator: Separator) {<br>self.separator = separator<br>super.init(frame: CGRect.zero)<br>self.delegate = self<br>}</p>
-<p>required init?(coder aDecoder: NSCoder) {<br>fatalError(“init(coder:) has not been implemented”)<br>}</p>
-<p>func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -&gt; Bool {<br>if string.rangeOfCharacter(from: self.cSet.inverted) != nil {<br>return false<br>}<br>if (textField.text?.characters.count)! + string.characters.count - range.length &gt; 13 {<br>return false<br>}<br>if (range.location == 3 || range.location == 8) &amp;&amp; range.length == 1 {<br>setCursorPosition(input: self, position: range.location)<br>return false<br>}<br>var newString = textField.text!<br>if range.length == 1 {<br>newString.remove(at: newString.index(newString.startIndex, offsetBy: range.location))<br>} else {<br>newString.insert(Character.init(string), at: newString.index(newString.startIndex, offsetBy: range.location))<br>}<br>if newString.characters.last?.description == separator.rawValue {<br>newString.remove(at: (newString.index(before: newString.endIndex)))<br>textField.text = newString<br>return false<br>}<br>var rawStr = newString.replacingOccurrences(of: separator.rawValue, with: “”)<br>if rawStr.characters.count &gt; 7 {<br>rawStr.insert(Character.init(separator.rawValue), at: rawStr.index(rawStr.startIndex, offsetBy: 7))<br>}<br>if rawStr.characters.count &gt; 2 {<br>rawStr.insert(Character.init(separator.rawValue), at: rawStr.index(rawStr.startIndex, offsetBy: 3))<br>if rawStr.characters.last?.description == separator.rawValue {<br>rawStr.remove(at: (rawStr.index(before: rawStr.endIndex)))<br>}<br>textField.text = rawStr<br>if range.length == 1 {<br>setCursorPosition(input: self, position: range.location)<br>} else if range.location == 3 || range.location == 8 {<br>setCursorPosition(input: self, position: range.location + 2)<br>} else {<br>setCursorPosition(input: self, position: range.location + 1)<br>}<br>return false<br>}<br>return true<br>}</p>
-<p>private func setCursorPosition(input: UITextField, position: Int) {<br>let position = input.position(from: input.beginningOfDocument, offset: position)!<br>input.selectedTextRange = input.textRange(from: position, to: position)<br>}</p>
-<p>func getNumber() -&gt; String {<br>var r = “”<br>let _ = self.text?.characters.filter({ (c) -&gt; Bool in<br>if c.description != separator.rawValue {<br>r.append(c)<br>}<br>return true<br>})<br>return r<br>}</p>
-<p>}</p>
-<blockquote>
-<p><a href="http://music.163.com/#/song?id=31445772" target="_blank" rel="external">理想三旬</a></p>
-</blockquote>
-
-  </section>
-
-</article>
-<section class="read-more">
-           
-    
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">Recent Articles</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/03/18/QuickUnion/" title="QuickUnion">QuickUnion</a></h2>
-                <p class="excerpt">
-                
-                public class QuickUnion {
+    <pre><code>public class QuickUnion {
 
     private static int[] id;
 
@@ -209,15 +171,62 @@
         QuickUnionUF(10);
         union(1, 2);
 
+        connected(1, 3);
+        connected(1, 2);
+    }
+
+    //给数组赋值, 值同 index
+    public static void QuickUnionUF(int N) {
+        id = new int[N];
+        for (int i = 0; i &lt; N; i++) {
+            id[i] = i;
+        }
+    }
+
+    //查找一个int 的根, 通过一层层网上查找
+    private static int root(int i) {
+        while (i != id[i]) i = id[i];
+        return i;
+    }
+
+    //判断2 个int 是否是同一个root
+    public static boolean connected(int p, int q) {
+        System.out.println(root(q) == root(p));
+        return root(q) == root(p);
+    }
+
+    //输入2 个int, 把第一个int 的root 连接到后一个int 的root 下面
+    public static void union(int p, int q) {
+        int i = root(p);
+        int j = root(q);
+        id[i] = j;
+        System.out.println(p + &quot; is union to &quot; + q);
+    }
+}
+</code></pre>
+  </section>
+
+</article>
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Earlier articles</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/10/15/ChangeTextViewStyleToPhone/" title="手机号码格式的 UITextField">手机号码格式的 UITextField</a></h2>
+                <p class="excerpt">
+                
+                目标 : 让textField 在输入手机号时, 显示成这种格式: [666 6666 6666] –&amp;gt; 第三位号码和第七位后面加一个分隔符, 在输入11为数字之后不可以继续输入.
+点 : 1.光标在分隔符后面时, 按删除键让光标往前移动一格.2.插入和从中间删除数字的时候让分隔符始终保持在原
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2017-03-18T15:55:47.000Z" class="post-list__meta--date date">2017-03-18</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
-  <a class="tag-link" href="/tags/Algs/">Algs</a>
-</span><a class="btn-border-small" href="/2017/03/18/QuickUnion/">ReadMore</a></div>
-                           
+                <div class="post-list__meta"><time datetime="2016-10-15T12:24:31.000Z" class="post-list__meta--date date">2016-10-15</time> &#8226; <span class="post-list__meta--tags tags">at&nbsp;
+  <a class="tag-link" href="/tags/Tips/">Tips</a>
+</span><a class="btn-border-small" href="/2016/10/15/ChangeTextViewStyleToPhone/">ReadMore</a></div>
+                       
             </div>
-        
-        
         
      
    
